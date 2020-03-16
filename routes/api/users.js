@@ -106,5 +106,16 @@ router.post("/register", (req, res) => {
       .catch(err => console.log(err));
   });
 
+  router.get('/view', (req, res) => {
+    Event.find(function(err, events) {
+      if (err) {
+          console.log(err);
+      } else {
+          res.json(events);
+          console.log(events);
+      }
+  });
+  })
+
 
   module.exports = router;

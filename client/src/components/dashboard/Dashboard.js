@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 // import CreateEvent from "./create-event";
 // import EditEvent from "./edit-event";
+import Particles from 'react-particles-js'
 
 class Dashboard extends Component {
   onLogoutClick = e => {
@@ -14,47 +15,66 @@ class Dashboard extends Component {
     this.props.history.push('/create/');
     console.log("redirecting done")
   }
+
+  onViewClick = () => {
+    this.props.history.push('/view/');
+    console.log("redirecting done")
+  }
 render() {
     const { user } = this.props.auth;
 return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="col s12 center-align">
-            <h4>
-              <b>Welcome onboard,</b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                Create your events here!!{" "}
-                Become a <span style={{ fontFamily: "monospace" }}>Doodler</span>
-              </p>
-            </h4>
-            <button
-              style={{
-                width: "200px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem",
-                marginRight: "2rem"
-              }}
-              onClick={this.onCreateEventClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              CREATE EVENT
-            </button>
-            <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Logout
-            </button>
-            
+        
+          <div className="row">
+            <div className="col s12 center-align">
+              <h4>
+                <b>Welcome onboard,</b> {user.name.split(" ")[0]}
+                <p className="flow-text blue-text text-darken-1">
+                  Create your events here!!{" "}
+                  Become a <span style={{ fontFamily: "monospace" }}>Doodler</span>
+                </p>
+              </h4>
+              <button
+                style={{
+                  width: "200px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  marginTop: "1rem",
+                  marginRight: "2rem"
+                }}
+                onClick={this.onCreateEventClick} 
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              >
+                CREATE EVENT
+              </button>
+              <button
+                style={{
+                  width: "150px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  marginTop: "1rem",
+                  marginRight: "2rem"
+                }}
+                onClick={this.onLogoutClick}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              >
+                Logout
+              </button>
+              <button
+                style={{
+                  width: "200px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  marginTop: "1rem"
+                }}
+                onClick={this.onViewClick}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              >
+                VIEW EVENTS
+              </button>
+              
+            </div>
           </div>
-        </div>
       </div>
     );
   }

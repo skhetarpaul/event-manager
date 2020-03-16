@@ -31,6 +31,18 @@ export const registerEvent = (userData, history) => dispatch => {
       })
     );
 };
+
+// export const viewEvent = (eventData, history) => dispatch => {
+//   axios
+//     .get("/api/users/view", eventData)
+//     .then(res => history.push("/view")) // re-direct to login on successful register
+//     .catch(err =>
+//       dispatch({
+//         type: GET_ERRORS,
+//         payload: err.response.data
+//       })
+//     );
+// };
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
