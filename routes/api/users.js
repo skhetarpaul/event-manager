@@ -49,7 +49,7 @@ router.post("/register", (req, res) => {
       return res.status(400).json(errors);
     }
   const email = req.body.email;
-    const password = req.body.password;
+  const password = req.body.password;
 
     User.findOne({ email }).then(user => {
       // Check if user exists
@@ -70,7 +70,7 @@ router.post("/register", (req, res) => {
             payload,
             keys.secretOrKey,
             {
-              expiresIn: 31556926 // 1 year in seconds
+              expiresIn: 172800 // 2 days in seconds
             },
             (err, token) => {
               res.json({

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 // import { viewEvent } from "../../actions/authActions";
 import classnames from "classnames";
+import {MdDelete} from "react-icons/md";
 import axios from 'axios'
 
 export default class ViewEvent extends Component {
@@ -26,11 +27,19 @@ componentDidMount() {
     axios.get("/api/users/view")
         .then(response => {
             this.setState({ events: response.data });
-            console.log(this.state.events)
+            console.log(this.state.events) 
         })
         .catch(function (error){
             console.log(error);
         })
+}
+deleteEvent(index) {
+  console.log(index); 
+  this.setState(prevState => {
+    const events = prevState.events.filter((event, i) => i != index);
+
+    return {events};
+  })
 }
 
 render() {
@@ -42,7 +51,7 @@ render() {
             <br/>
             <br/>
            {this.state.events.map((event, index) => (
-              <h4 class="grey-text">{event.name} is scheduled at {event.venue}!<br/><br/></h4>
+              <h4 class="grey-text">{event.name} is scheduled at {event.venue} !<MdDelete onClick = {this.deleteEvent.bind(this, index)}/><br/><br/></h4> 
               // <br/>
             ))}
         </div> 
